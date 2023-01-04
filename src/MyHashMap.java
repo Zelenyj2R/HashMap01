@@ -1,10 +1,8 @@
-public class MyHashMap<K,V> implements MyMap<K,V>{
-
+public class MyHashMap<K, V> implements MyMap<K, V> {
     private int size;
     private Node<K, V> current;
-    /*put(Object key, Object value) додає пару ключ + значення*/
     @Override
-    public void put(K key, V value){
+    public void put(K key, V value) {
         if (size == 0) {
             current = new Node<>(key, value, null);
             size++;
@@ -17,10 +15,8 @@ public class MyHashMap<K,V> implements MyMap<K,V>{
             size++;
         }
     }
-
-    //remove(Object key) видаляє пару за ключем
     @Override
-    public void remove(Object key){
+    public void remove(Object key) {
         Node<K, V> prev = null;
         Node<K, V> temp = current;
 
@@ -41,25 +37,18 @@ public class MyHashMap<K,V> implements MyMap<K,V>{
             }
         }
     }
-
-    //clear() очищає колекцію
     @Override
-    public void clear(){
+    public void clear() {
         size = 0;
         current = null;
     }
-
-    // size() повертає розмір колекції
     @Override
-    public int size(){
+    public int size() {
         return size;
     }
-
-    //get(Object key) повертає значення (Object value) за ключем
     @Override
-    public V get(Object key){
+    public V get(Object key) {
         Node<K, V> tempNode = current;
-
         for (int i = 0; i < size; i++) {
             if (tempNode.key == key) {
                 return tempNode.value;
@@ -69,13 +58,10 @@ public class MyHashMap<K,V> implements MyMap<K,V>{
         }
         return tempNode.value;
     }
-
     static class Node<K, V> {
         private K key;
         private V value;
-
         private Node<K, V> next;
-
         public Node(K key, V value, Node<K, V> next) {
             this.key = key;
             this.value = value;
